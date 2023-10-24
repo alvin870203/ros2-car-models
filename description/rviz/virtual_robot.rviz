@@ -54,116 +54,59 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        back_camera_link:
+        car_1_base_link:
           Value: true
-        back_camera_link_optical:
+        car_1_camera_link:
           Value: true
-        back_left_far_sonar_link:
+        car_1_chassis:
           Value: true
-        back_left_middle_sonar_link:
+        car_1_chassis_inertia:
           Value: true
-        back_right_far_sonar_link:
+        car_1_laser:
           Value: true
-        back_right_middle_sonar_link:
+        car_1_left_front_wheel:
           Value: true
-        base_link:
+        car_1_left_rear_wheel:
           Value: true
-        center_laser_link:
+        car_1_left_steering_hinge:
           Value: true
-        chassis:
+        car_1_link:
           Value: true
-        fl_axle:
+        car_1_right_front_wheel:
           Value: true
-        fr_axle:
+        car_1_right_link:
           Value: true
-        front_camera_link:
+        car_1_right_rear_wheel:
           Value: true
-        front_camera_link_optical:
+        car_1_right_steering_hinge:
           Value: true
-        front_left_far_sonar_link:
-          Value: true
-        front_left_laser_link:
-          Value: true
-        front_left_middle_sonar_link:
-          Value: true
-        front_left_wheel:
-          Value: true
-        front_right_far_sonar_link:
-          Value: true
-        front_right_laser_link:
-          Value: true
-        front_right_middle_sonar_link:
-          Value: true
-        front_right_wheel:
-          Value: true
-        left_camera_link:
-          Value: true
-        left_camera_link_optical:
-          Value: true
-        rear_left_wheel:
-          Value: true
-        rear_right_wheel:
-          Value: true
-        right_camera_link:
-          Value: true
-        right_camera_link_optical:
-          Value: true
-        steering_wheel:
-          Value: true
-      Marker Scale: 1
+      Marker Scale: 0.25
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          chassis:
-            back_camera_link:
-              back_camera_link_optical:
+        car_1_base_link:
+          car_1_chassis:
+            car_1_chassis_inertia:
+              {}
+            car_1_laser:
+              {}
+            car_1_left_rear_wheel:
+              {}
+            car_1_left_steering_hinge:
+              car_1_left_front_wheel:
                 {}
-            back_left_far_sonar_link:
-              {}
-            back_left_middle_sonar_link:
-              {}
-            back_right_far_sonar_link:
-              {}
-            back_right_middle_sonar_link:
-              {}
-            center_laser_link:
-              {}
-            fl_axle:
-              front_left_wheel:
+            car_1_link:
+              car_1_camera_link:
                 {}
-            fr_axle:
-              front_right_wheel:
+              car_1_right_link:
                 {}
-            front_camera_link:
-              front_camera_link_optical:
+            car_1_right_rear_wheel:
+              {}
+            car_1_right_steering_hinge:
+              car_1_right_front_wheel:
                 {}
-            front_left_far_sonar_link:
-              {}
-            front_left_laser_link:
-              {}
-            front_left_middle_sonar_link:
-              {}
-            front_right_far_sonar_link:
-              {}
-            front_right_laser_link:
-              {}
-            front_right_middle_sonar_link:
-              {}
-            left_camera_link:
-              left_camera_link_optical:
-                {}
-            rear_left_wheel:
-              {}
-            rear_right_wheel:
-              {}
-            right_camera_link:
-              right_camera_link_optical:
-                {}
-            steering_wheel:
-              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -184,120 +127,63 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        back_camera_link:
+        car_1_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        back_camera_link_optical:
+        car_1_camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        back_left_far_sonar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        back_left_middle_sonar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        back_right_far_sonar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        back_right_middle_sonar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        center_laser_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        chassis:
+        car_1_chassis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        fl_axle:
+        car_1_chassis_inertia:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        fr_axle:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_camera_link_optical:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_left_far_sonar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_left_laser_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_left_middle_sonar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_left_wheel:
+        car_1_laser:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        front_right_far_sonar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_right_laser_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_right_middle_sonar_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_right_wheel:
+        car_1_left_front_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        left_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        left_camera_link_optical:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rear_left_wheel:
+        car_1_left_rear_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        rear_right_wheel:
+        car_1_left_steering_hinge:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        right_camera_link:
+        car_1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        right_camera_link_optical:
+          Value: true
+        car_1_right_front_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        steering_wheel:
+          Value: true
+        car_1_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        car_1_right_rear_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        car_1_right_steering_hinge:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -313,7 +199,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: car_1_base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -356,25 +242,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 5.226466178894043
+      Distance: 0.918669581413269
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 2.1063454151153564
-        Y: -0.03340548649430275
-        Z: 0.1219542995095253
+        X: 0.4747377038002014
+        Y: -0.27806851267814636
+        Z: 0.43633174896240234
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6947967410087585
+      Pitch: 0.7947971224784851
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.608618259429932
+      Yaw: 5.5935845375061035
     Saved: ~
 Window Geometry:
   Displays:

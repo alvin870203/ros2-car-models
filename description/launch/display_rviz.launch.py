@@ -17,8 +17,8 @@ def generate_launch_description():
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('description'))
-    xacro_file = os.path.join(pkg_path,'urdf','prius.urdf.xacro')
-    rviz_config_file = os.path.join(pkg_path,'rviz','prius.rviz')
+    xacro_file = os.path.join(pkg_path,'urdf','virtual_robot.urdf.xacro')
+    rviz_config_file = os.path.join(pkg_path,'rviz','virtual_robot.rviz')
     robot_description_config = xacro.process_file(xacro_file)
 
     # Create a robot_state_publisher node
@@ -50,7 +50,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', rviz_config_file],
+        # arguments=['-d', rviz_config_file],
     )
 
     # Launch!
