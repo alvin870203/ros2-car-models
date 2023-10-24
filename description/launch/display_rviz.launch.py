@@ -17,8 +17,8 @@ def generate_launch_description():
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('description'))
-    xacro_file = os.path.join(pkg_path,'urdf','yahboomcar_R2.urdf.xacro')
-    rviz_config_file = os.path.join(pkg_path,'rviz','yahboomcar_R2.rviz')
+    xacro_file = os.path.join(pkg_path,'urdf','autocar.urdf.xacro')
+    rviz_config_file = os.path.join(pkg_path,'rviz','autocar.rviz')
     robot_description_config = xacro.process_file(xacro_file)
 
     # Create a robot_state_publisher node
