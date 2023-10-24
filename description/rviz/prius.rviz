@@ -54,25 +54,61 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        back_camera_link:
+          Value: true
+        back_camera_link_optical:
+          Value: true
+        back_left_far_sonar_link:
+          Value: true
+        back_left_middle_sonar_link:
+          Value: true
+        back_right_far_sonar_link:
+          Value: true
+        back_right_middle_sonar_link:
+          Value: true
         base_link:
           Value: true
-        bl_1:
+        center_laser_link:
           Value: true
-        br_1:
+        chassis:
           Value: true
-        chassis_link:
+        fl_axle:
           Value: true
-        fl_1:
+        fr_axle:
           Value: true
-        fr_1:
+        front_camera_link:
           Value: true
-        hokuyo_link:
+        front_camera_link_optical:
           Value: true
-        l_steer_1:
+        front_left_far_sonar_link:
           Value: true
-        r_steer_1:
+        front_left_laser_link:
           Value: true
-        spoiler_link:
+        front_left_middle_sonar_link:
+          Value: true
+        front_left_wheel:
+          Value: true
+        front_right_far_sonar_link:
+          Value: true
+        front_right_laser_link:
+          Value: true
+        front_right_middle_sonar_link:
+          Value: true
+        front_right_wheel:
+          Value: true
+        left_camera_link:
+          Value: true
+        left_camera_link_optical:
+          Value: true
+        rear_left_wheel:
+          Value: true
+        rear_right_wheel:
+          Value: true
+        right_camera_link:
+          Value: true
+        right_camera_link_optical:
+          Value: true
+        steering_wheel:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -81,20 +117,52 @@ Visualization Manager:
       Show Names: true
       Tree:
         base_link:
-          chassis_link:
-            bl_1:
-              {}
-            br_1:
-              {}
-            hokuyo_link:
-              {}
-            l_steer_1:
-              fl_1:
+          chassis:
+            back_camera_link:
+              back_camera_link_optical:
                 {}
-            r_steer_1:
-              fr_1:
+            back_left_far_sonar_link:
+              {}
+            back_left_middle_sonar_link:
+              {}
+            back_right_far_sonar_link:
+              {}
+            back_right_middle_sonar_link:
+              {}
+            center_laser_link:
+              {}
+            fl_axle:
+              front_left_wheel:
                 {}
-            spoiler_link:
+            fr_axle:
+              front_right_wheel:
+                {}
+            front_camera_link:
+              front_camera_link_optical:
+                {}
+            front_left_far_sonar_link:
+              {}
+            front_left_laser_link:
+              {}
+            front_left_middle_sonar_link:
+              {}
+            front_right_far_sonar_link:
+              {}
+            front_right_laser_link:
+              {}
+            front_right_middle_sonar_link:
+              {}
+            left_camera_link:
+              left_camera_link_optical:
+                {}
+            rear_left_wheel:
+              {}
+            rear_right_wheel:
+              {}
+            right_camera_link:
+              right_camera_link_optical:
+                {}
+            steering_wheel:
               {}
       Update Interval: 0
       Value: true
@@ -116,49 +184,120 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        back_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        back_camera_link_optical:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        back_left_far_sonar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        back_left_middle_sonar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        back_right_far_sonar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        back_right_middle_sonar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        bl_1:
+        center_laser_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        chassis:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        br_1:
+        fl_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        fr_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_camera_link_optical:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_left_far_sonar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_left_laser_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_left_middle_sonar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_left_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        chassis_link:
+        front_right_far_sonar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_right_laser_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_right_middle_sonar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        front_right_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        fl_1:
+        left_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        left_camera_link_optical:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rear_left_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        fr_1:
+        rear_right_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        hokuyo_link:
+        right_camera_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        l_steer_1:
+        right_camera_link_optical:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        r_steer_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        spoiler_link:
+        steering_wheel:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -217,25 +356,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 7.91851282119751
+      Distance: 5.226466178894043
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 2.1063454151153564
+        Y: -0.03340548649430275
+        Z: 0.1219542995095253
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.839796781539917
+      Pitch: 0.6947967410087585
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.9053959846496582
+      Yaw: 5.608618259429932
     Saved: ~
 Window Geometry:
   Displays:
