@@ -2,7 +2,7 @@
 <robot name="sensor_sick_microscan3"
 	xmlns:xacro="http://wiki.ros.org/xacro">
 
-	<xacro:macro name="sensor_sick_microscan3" params="prefix parent prefix_topic:='front_laser' *origin max_angle:=2.3562 min_angle:=-2.3562">
+	<xacro:macro name="sensor_sick_microscan3" params="prefix parent prefix_topic:='front_laser' *origin max_angle:=2.2465 min_angle:=-2.2465 gpu:=^|true">
 
 		<joint name="${prefix}_base_joint" type="fixed">
 			<xacro:insert_block name="origin" />
@@ -12,11 +12,11 @@
 
 		<link name="${prefix}_base_link">
 			<collision>
-				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<origin xyz="0 0 0.075" rpy="0 0 0"/>
 				<geometry>
-					<!--<box size="0.106 0.094 0.152"/>-->
+					<box size="0.106 0.094 0.152"/>
 					<!--<cylinder radius="0.058" length="0.152"/>-->
-					<mesh filename="package://description/meshes/robotnik_sensors/sick_microscan3.dae"/>
+					<!--<mesh filename="package://description/meshes/robotnik_sensors/sick_microscan3.dae"/>-->
 				</geometry>
 			</collision>
 
@@ -28,9 +28,9 @@
 			</visual>
 
 			<inertial>
-				<mass value="1e-5" />
-				<origin xyz="0 0 0" rpy="0 0 0"/>
-				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+				<mass value="1.15" />
+				<origin xyz="0 0 0.075" rpy="0 0 0"/>
+				<xacro:solid_cuboid_inertia m="1.15" w="0.112" h="0.111" d="0.15" />
 			</inertial>
 		</link>
 
@@ -43,13 +43,23 @@
 		<link name="${prefix}_link" />
 
 		<!-- Sick sensor sensor for simulation -->
-		<sensor_sick_microscan3_gazebo />
+		<xacro:sensor_sick_microscan3_gazebo />
 
 	</xacro:macro>
 
 	<xacro:macro name="sensor_sick_microscan3_gazebo">
 		<gazebo reference="${prefix}_link">
-			<sensor type="gpu_ray" name="${prefix}_sensor">
+
+			<xacro:if value="${gpu}">
+				<xacro:property name="ray_type" value="gpu_ray" />
+				<xacro:property name="plugin_lib" value="libgazebo_ros_gpu_laser.so" />
+			</xacro:if>
+			<xacro:unless value="${gpu}">
+				<xacro:property name="ray_type" value="ray" />
+				<xacro:property name="plugin_lib" value="libgazebo_ros_laser.so" />
+			</xacro:unless>
+
+			<sensor type="${ray_type}" name="${prefix}_sensor">
 				<pose>0 0 0 0 0 0</pose>
 				<visualize>false</visualize>
 				<update_rate>12.5</update_rate>
@@ -73,7 +83,7 @@
 						<stddev>0.03</stddev>
 					</noise>
 				</ray>
-				<plugin name="${prefix}_controller" filename="libgazebo_ros_gpu_laser.so">
+				<plugin name="${prefix}_controller" filename="${plugin_lib}">
 					<topicName>${prefix_topic}/scan</topicName>
 					<frameName>/${prefix}_link</frameName>					<!-- if not global (leading /) sets the current namespace as a prefix (/ns/name_laser_link) -->
 				</plugin>

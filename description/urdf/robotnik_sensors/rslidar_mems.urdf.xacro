@@ -3,20 +3,15 @@
 
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
-
   <xacro:macro name="sensor_rslidar_mems" params="prefix parent *origin">
-
-    <material name="black_alu">
-      <color rgba="0.9 0.9 0.9 1"/>
-    </material>
 
     <joint name="${prefix}_base_joint" type="fixed">
       <xacro:insert_block name="origin" />
-		  <parent link="${parent}"/>
-		  <child link="${prefix}_base_link" />
-		</joint>
+      <parent link="${parent}"/>
+      <child link="${prefix}_base_link" />
+    </joint>
 
-		<link name="${prefix}_base_link">
+    <link name="${prefix}_base_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -31,7 +26,12 @@
           <mesh filename="package://description/meshes/robotnik_sensors/rslidar_mems.stl" />
         </geometry>
       </collision>
-		</link>
+      <inertial>
+        <mass value="0.8" />
+        <origin xyz="0 0 0.025" rpy="0 0 0"/>
+        <xacro:solid_cuboid_inertia m="0.8" w="0.12" h="0.110" d="0.05" />
+      </inertial>
+    </link>
 
     <joint name="${prefix}_joint" type="fixed">
       <origin xyz="0 0 0.03" rpy="0 0 0"/>
@@ -41,7 +41,7 @@
     <link name="${prefix}_link"/>
 
     <!-- sensor for simulation -->
-    <sensor_rslidar_mems_gazebo range_min="1" range_max="180" gpu="false" />
+    <xacro:sensor_rslidar_mems_gazebo range_min="1" range_max="180" gpu="false" />
 
   </xacro:macro>
 
