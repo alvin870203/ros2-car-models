@@ -17,18 +17,9 @@ def generate_launch_description():
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('description'))
-    
-    # Robot-1 (Uncomment to switch to catvehicle)
-    # xacro_file = os.path.join(pkg_path,'urdf','humancar.urdf.xacro')
-    # rviz_config_file = os.path.join(pkg_path,'rviz','humancar.rviz')
-    
-    # Robot-2
-    xacro_file = os.path.join(pkg_path,'urdf','catvehicle.urdf.xacro')
-    rviz_config_file = os.path.join(pkg_path,'rviz','catvehicle.rviz')
-    
-    robot_description_config = xacro.process_file(xacro_file, 
-                                                  mappings={'roboname': 'catvehicle',
-                                                            'updateRate': '20.0'})
+    xacro_file = os.path.join(pkg_path,'urdf','rc_truck.urdf.xacro')
+    rviz_config_file = os.path.join(pkg_path,'rviz','rc_truck.rviz')
+    robot_description_config = xacro.process_file(xacro_file)
 
     # Create a robot_state_publisher node
     params = {'robot_description': robot_description_config.toxml(), 'use_sim_time': True}
