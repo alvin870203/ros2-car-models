@@ -1,3 +1,4 @@
+![Alt text](rviz2__f1tenth-dev__simulator.png)
 
 # Note
 
