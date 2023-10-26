@@ -1,3 +1,8 @@
+Robot-1
+![Alt text](rviz2__RobotnikAutomation__rbcar_common__rbcar.png)
+
+Robot-2 (Default)
+![Alt text](rviz2__RobotnikAutomation__rbcar_common__rbcar_roborder.png)
 
 # Note
 
