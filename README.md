@@ -1,3 +1,4 @@
+![Alt text](rviz2__ehtashamakram__rc-robot-urdf.png)
 
 # Note
 
