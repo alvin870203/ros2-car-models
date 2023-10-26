@@ -1,3 +1,4 @@
+![Alt text](rviz2__jmscslgroup__catvehicle.png)
 
 # Note
 
