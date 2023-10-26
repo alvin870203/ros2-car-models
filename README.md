@@ -1,3 +1,4 @@
+![Alt text](rviz2__osrf__car_demo.png)
 
 # Note
 
