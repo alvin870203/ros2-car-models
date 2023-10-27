@@ -39,7 +39,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://description/meshes/hokuyo.dae" />
+        <mesh filename="file://$(find description)/meshes/hokuyo.dae" />
       </geometry>
     </visual>
 
@@ -59,14 +59,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://description/meshes/chassis_link.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/chassis_link.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="silver" />
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://description/meshes/chassis_link.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/chassis_link.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -81,14 +81,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://description/meshes/spoiler.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/spoiler.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="silver" />
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://description/meshes/spoiler.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/spoiler.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -102,14 +102,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.8750 1.0136 0.1444" />
       <geometry>
-        <mesh filename="package://description/meshes/br_1.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/br_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkgrey" />
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.8750 1.0136 0.1444" />
       <geometry>
-        <mesh filename="package://description/meshes/br_1.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/br_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -123,14 +123,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.8750 1.0136 0.1444" />
       <geometry>
-        <mesh filename="package://description/meshes/bl_1.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/bl_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkgrey" />
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.8750 1.0136 0.1444" />
       <geometry>
-        <mesh filename="package://description/meshes/bl_1.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/bl_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -144,14 +144,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="-0.8750 -1.5174 0.1444" />
       <geometry>
-        <mesh filename="package://description/meshes/fr_1.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/fr_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkgrey" />
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="-0.8750 -1.5174 0.1444" />
       <geometry>
-        <mesh filename="package://description/meshes/fr_1.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/fr_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
@@ -165,14 +165,14 @@
     <visual>
       <origin rpy="0 0 0" xyz="0.8750 -1.5174 0.1444" />
       <geometry>
-        <mesh filename="package://description/meshes/fl_1.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/fl_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkgrey" />
     </visual>
     <collision>
       <origin rpy="0 0 0" xyz="0.8750 -1.5174 0.1444" />
       <geometry>
-        <mesh filename="package://description/meshes/fl_1.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="file://$(find description)/meshes/fl_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>
