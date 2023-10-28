@@ -205,8 +205,6 @@
     </inertial>
   </link>
 
-  <link name="steering_wheel" />  <!-- FIXME: missing inertia, error in rviz2 -->
-
   <joint name="br_axle" type="continuous">
     <origin rpy="0 0 0" xyz="0.8750 -1.013637 -0.144363" />
     <parent link="chassis_link" />
@@ -253,14 +251,6 @@
     <limit effort="1000.0" lower="-0.95" upper="0.95" velocity="100" />
   </joint>
 
-  <joint name="steering_joint" type="revolute">
-    <origin rpy="-0.002 0 0" xyz="0 0 0" />
-    <parent link="chassis_link" />
-    <child link="steering_wheel" />
-    <axis xyz="-0.964118 0.000768 0.265556" />
-    <limit effort="1000.0" lower="-100" upper="100" velocity="100" />
-  </joint>
-
   <gazebo reference="chassis_link">
     <material>Gazebo/White</material>
     <mu1>0.2</mu1>
@@ -300,8 +290,8 @@
 
   <gazebo reference="fl_1">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.1</mu1>
-    <mu2>1.1</mu2>
+    <mu1>1.7</mu1>
+    <mu2>1.7</mu2>
     <selfCollide>true</selfCollide>
   </gazebo>
 
