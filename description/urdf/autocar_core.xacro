@@ -107,9 +107,15 @@
       <material name="darkgrey" />
     </visual>
     <collision>
+      <!-- NOTE: Somehow libgazebo_ros_ackermann_drive.so don't work with collision using this custom mesh. Only built-in cylinder and sphere works, and built-in box don't work either.
       <origin rpy="0 0 0" xyz="-0.8750 1.0136 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/br_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      -->
+      <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+        <cylinder radius="0.3425" length="0.22"/>
       </geometry>
     </collision>
   </link>
@@ -128,9 +134,15 @@
       <material name="darkgrey" />
     </visual>
     <collision>
+      <!-- NOTE: Somehow libgazebo_ros_ackermann_drive.so don't work with collision using this custom mesh. Only built-in cylinder and sphere works, and built-in box don't work either.
       <origin rpy="0 0 0" xyz="0.8750 1.0136 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/bl_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      -->
+      <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+        <cylinder radius="0.3425" length="0.22"/>
       </geometry>
     </collision>
   </link>

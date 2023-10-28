@@ -29,6 +29,12 @@ ros2 launch description preview_urdf.launch.py
 ```bash
 source install/setup.bash
 ros2 launch description publish_robot_state.launch.py # Publish /robot_description
-ros2 launch gazebo_ros gazebo.launch.py # Lauch empty Gazebo
-ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity robot_name # Spawn robot in Gazebot
+ros2 launch gazebo_ros gazebo.launch.py # Lauch empty Gazebo (or by running `gazebo --verbose -s libgazebo_ros_factory.so`)
+ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity robot_name # Spawn robot in Gazebot (or spawn robot SDF by running `ros2 run gazebo_ros spawn_entity.py -file sdf_file_path -entity robot_name`)
+```
+
+## Send test `/cmd_vel` to control simulated robot
+```bash
+source install/setup.bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard # or specify the namespace (to publish to /target_namespace/cmd_vel) by running `ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r __ns:=/target_namespace`
 ```
