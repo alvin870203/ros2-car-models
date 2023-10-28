@@ -193,7 +193,7 @@
     </inertial>
   </link>
 
-  <link name="steering_wheel" />
+  <link name="steering_wheel" />  <!-- FIXME: missing inertia, error in rviz2 -->
 
   <joint name="br_axle" type="continuous">
     <origin rpy="0 0 0" xyz="0.8750 -1.013637 -0.144363" />
