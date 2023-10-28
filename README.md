@@ -23,6 +23,7 @@ colcon build --symlink-install
 ```bash
 source install/setup.bash
 ros2 launch description preview_urdf.launch.py
+# Run `rviz2 -d rviz2_config_file_path` to just open rviz2 with saved settings.
 ```
 
 ## Spawn URDF in Gazebo
