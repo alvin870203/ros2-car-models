@@ -93,7 +93,7 @@
     </collision>
   </link>
 
-  <!-- ALC231031 - TODO: Revise friction, dynamics, slides, shere wheel, etc. -->
+  <!-- ALC231031 - TODO: Revise friction, dynamics, dampling, slides, shere wheel, etc. -->
 
   <link name="br_1">
     <inertial>
