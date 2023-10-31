@@ -2,6 +2,10 @@
 <robot name="autocar" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="autocar_core.xacro" />
-  <xacro:include filename="autocar_gazebo_control.xacro" />
+
+  <!-- ALC231031 BEGIN - Make it switchable. -->
+  <!-- <xacro:include filename="autocar_gazebo_control.xacro" /> -->
+  <xacro:include filename="autocar_ros2_control.xacro" />
+  <!-- ALC231031 END -->
 
 </robot>

@@ -93,6 +93,8 @@
     </collision>
   </link>
 
+  <!-- ALC231031 - TODO: Revise friction, dynamics, slides, shere wheel, etc. -->
+
   <link name="br_1">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.0377 1.5929e-07 -1.5929e-07" />

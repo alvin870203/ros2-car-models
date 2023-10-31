@@ -1,0 +1,17 @@
+controller_manager:
+  ros_parameters:
+    update_rate: 30 # Hz
+    use_sim_time: true
+
+    ackermann_steering_controller:
+      type: ackermann_steering_controller/AckermannSteeringController
+    
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+ackermann_steering_controller:
+  ros__parameters:
+    # ALC231031 - TODO: Unfinished
+
+# joint_state_broadcaster:
+#   ros__parameters:
