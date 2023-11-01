@@ -27,13 +27,10 @@ def generate_launch_description():
 
     # Launch args
     world_path = LaunchConfiguration('world_path')
-    prefix = LaunchConfiguration('prefix')
 
-    # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
-    # config_robot_velocity_controller = PathJoinSubstitution(
-    #     [FindPackageShare("control"), "config", "control.yaml"]
-    # )
-    # ALC231031 END
+    config_robot_controller = PathJoinSubstitution(
+        [FindPackageShare("control"), "config", "control.yaml"]
+    )
 
     # Get URDF via xacro
     robot_description_content = Command(
@@ -44,28 +41,18 @@ def generate_launch_description():
                 [FindPackageShare("description"), "urdf", "autocar.urdf.xacro"]
             ),
             " ",
-            "name:=autocar",
-            " ",
-            "prefix:=''",
-            " ",
-            "is_sim:=true",
-            # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
-            # " ",
-            # "gazebo_controllers:=",
-            # config_robot_velocity_controller,
-            # ALC231031 END
+            "gazebo_controllers:=",
+            config_robot_controller,
         ]
     ).perform(LaunchContext())
     robot_description = {"robot_description": robot_description_content}
 
-    # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
-    # spawn_robot_velocity_controller = Node(
-    #     package='controller_manager',
-    #     executable='spawner.py',
-    #     arguments=['robot_velocity_controller', '-c', '/controller_manager'],
-    #     output='screen',
-    # )
-    # ALC231031 END
+    spawn_ackermann_steering_controller = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['ackermann_steering_controller', '-c', '/controller_manager'],
+        output='screen',
+    ) # ALC231101 - TODO: Remap /ackermann_steering_controller/odometry:=/odom
 
     node_robot_state_publisher = Node(
         package="robot_state_publisher",
@@ -74,24 +61,20 @@ def generate_launch_description():
         parameters=[{'use_sim_time': True}, robot_description],
     )
 
-    # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
-    # spawn_joint_state_broadcaster = Node(
-    #     package='controller_manager',
-    #     executable='spawner.py',
-    #     arguments=['joint_state_broadcaster', '-c', '/controller_manager'],
-    #     output='screen',
-    # )
-    # ALC231031 END
+    spawn_joint_state_broadcaster = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['joint_state_broadcaster', '-c', '/controller_manager'],
+        output='screen',
+    )
 
-    # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
-    # # Make sure spawn_robot_velocity_controller starts after spawn_joint_state_broadcaster
-    # diffdrive_controller_spawn_callback = RegisterEventHandler(
-    #     event_handler=OnProcessExit(
-    #         target_action=spawn_joint_state_broadcaster,
-    #         on_exit=[spawn_robot_velocity_controller],
-    #     )
-    # )
-    # ALC231031 END
+    # Make sure spawn_ackermann_steering_controller starts after spawn_joint_state_broadcaster
+    ackermann_steering_controller_spawn_callback = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=spawn_joint_state_broadcaster,
+            on_exit=[spawn_ackermann_steering_controller],
+        )
+    )
 
     # Gazebo server
     gzserver = ExecuteProcess(
@@ -137,8 +120,8 @@ def generate_launch_description():
     ld = LaunchDescription(ARGUMENTS)
     ld.add_action(gz_resource_path)
     ld.add_action(node_robot_state_publisher)
-    # ld.add_action(spawn_joint_state_broadcaster)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
-    # ld.add_action(diffdrive_controller_spawn_callback)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
+    # ld.add_action(spawn_joint_state_broadcaster)
+    # ld.add_action(ackermann_steering_controller_spawn_callback)
     ld.add_action(gzserver)
     ld.add_action(gzclient)
     ld.add_action(spawn_robot)

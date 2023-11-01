@@ -44,7 +44,13 @@ ros2 run gazebo_ros spawn_entity.py -topic robot_description -entity robot_name 
 ## Send test `/cmd_vel` to control simulated robot
 ```bash
 source install/setup.bash
-ros2 run teleop_twist_keyboard teleop_twist_keyboard # or specify the namespace (to publish to /target_namespace/cmd_vel) by running `ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r __ns:=/target_namespace`
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+# Or,
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r __ns:=/target_namespace # Specify the namespace (to publish to /target_namespace/cmd_vel)
+
+# Or,
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/target_namespace/target_topic # Remap the topic (to publish to /target_namespace/target_topic)
 ```
 
 ## View simulated robot in rviz2
