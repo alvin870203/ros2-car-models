@@ -19,6 +19,11 @@ ackermann_steering_controller:
     use_stamped_vel: false
     rear_wheels_names: [br_axle, bl_axle]
     front_wheels_names: [r_steer, l_steer]
+    # ALC231101 BEGIN - FIXME: Following params have no effect. How to publish odom tf?
+    # odom_frame_id: odom
+    # base_frame_id: base_link
+    # enable_odom_tf: true
+    # ALC231101 END
 
     wheelbase: 2.531
     front_wheel_track: 1.65
