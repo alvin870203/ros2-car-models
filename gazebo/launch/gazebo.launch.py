@@ -18,13 +18,6 @@ ARGUMENTS = [
 
 def generate_launch_description():
 
-    gz_resource_path = SetEnvironmentVariable(name='GAZEBO_MODEL_PATH', value=[
-                                                EnvironmentVariable('GAZEBO_MODEL_PATH',
-                                                                    default_value=''),
-                                                '/usr/share/gazebo-11/models/:',
-                                                str(Path(get_package_share_directory('description')).
-                                                    parent.resolve())])
-
     # Launch args
     world_path = LaunchConfiguration('world_path')
 
@@ -47,13 +40,6 @@ def generate_launch_description():
     ).perform(LaunchContext())
     robot_description = {"robot_description": robot_description_content}
 
-    spawn_ackermann_steering_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['ackermann_steering_controller', '-c', '/controller_manager'],
-        output='screen',
-    ) # ALC231101 - TODO: Remap /ackermann_steering_controller/odometry:=/odom
-
     node_robot_state_publisher = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -61,20 +47,12 @@ def generate_launch_description():
         parameters=[{'use_sim_time': True}, robot_description],
     )
 
-    spawn_joint_state_broadcaster = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['joint_state_broadcaster', '-c', '/controller_manager'],
-        output='screen',
-    )
-
-    # Make sure spawn_ackermann_steering_controller starts after spawn_joint_state_broadcaster
-    ackermann_steering_controller_spawn_callback = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=spawn_joint_state_broadcaster,
-            on_exit=[spawn_ackermann_steering_controller],
-        )
-    )
+    gz_resource_path = SetEnvironmentVariable(name='GAZEBO_MODEL_PATH', value=[
+                                                EnvironmentVariable('GAZEBO_MODEL_PATH',
+                                                                    default_value=''),
+                                                '/usr/share/gazebo-11/models/:',
+                                                str(Path(get_package_share_directory('description')).
+                                                    parent.resolve())])
 
     # Gazebo server
     gzserver = ExecuteProcess(
@@ -104,6 +82,28 @@ def generate_launch_description():
         output='screen',
     )
 
+    spawn_joint_state_broadcaster = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['joint_state_broadcaster', '-c', '/controller_manager'],
+        output='screen',
+    )
+
+    spawn_ackermann_steering_controller = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['ackermann_steering_controller', '-c', '/controller_manager'],
+        output='screen',
+    ) # ALC231101 - TODO: Remap /ackermann_steering_controller/odometry:=/odom
+
+    # Make sure spawn_ackermann_steering_controller starts after spawn_joint_state_broadcaster
+    ackermann_steering_controller_spawn_callback = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=spawn_joint_state_broadcaster,
+            on_exit=[spawn_ackermann_steering_controller],
+        )
+    )
+
     # Relay odom tf topic because it can not be remapped by ackermann_steering_controller
     relay_topic_to_tf_node = Node(
         package='topic_tools',
@@ -126,13 +126,13 @@ def generate_launch_description():
     # ALC231031 END
 
     ld = LaunchDescription(ARGUMENTS)
-    ld.add_action(gz_resource_path)
     ld.add_action(node_robot_state_publisher)
-    ld.add_action(spawn_joint_state_broadcaster)
-    ld.add_action(ackermann_steering_controller_spawn_callback)
+    ld.add_action(gz_resource_path)
     ld.add_action(gzserver)
     ld.add_action(gzclient)
     ld.add_action(spawn_robot)
+    ld.add_action(spawn_joint_state_broadcaster)
+    ld.add_action(ackermann_steering_controller_spawn_callback)
     ld.add_action(relay_topic_to_tf_node)
     # ld.add_action(launch_robot_control)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
     # ld.add_action(launch_robot_teleop_base)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
