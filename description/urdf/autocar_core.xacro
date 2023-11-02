@@ -117,7 +117,7 @@
       -->
       <origin xyz="0 0 0" rpy="1.5708 0 0"/>
       <geometry>
-        <cylinder radius="0.3425" length="0.22"/>
+        <sphere radius="0.3425"/>
       </geometry>
     </collision>
   </link>
@@ -144,7 +144,7 @@
       -->
       <origin xyz="0 0 0" rpy="1.5708 0 0"/>
       <geometry>
-        <cylinder radius="0.3425" length="0.22"/>
+        <sphere radius="0.3425"/>
       </geometry>
     </collision>
   </link>
@@ -163,9 +163,9 @@
       <material name="darkgrey" />
     </visual>
     <collision>
-      <origin rpy="0 0 -1.5708" xyz="-1.5174 0.8750 0.1444" />
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description)/meshes/fr_1.stl" scale="0.001 0.001 0.001" />
+        <sphere radius="0.3425"/>
       </geometry>
     </collision>
   </link>
@@ -184,9 +184,9 @@
       <material name="darkgrey" />
     </visual>
     <collision>
-      <origin rpy="0 0 -1.5708" xyz="-1.5174 -0.8750 0.1444" />
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
       <geometry>
-        <mesh filename="file://$(find description)/meshes/fl_1.stl" scale="0.001 0.001 0.001" />
+        <sphere radius="0.3425"/>
       </geometry>
     </collision>
   </link>
