@@ -23,14 +23,14 @@
 
   <joint name="hokuyo_joint" type="fixed">
     <axis xyz="0 1 0" />
-    <origin xyz="0 2.34 0.24" rpy="0 0 1.5708" />
+    <origin xyz="2.34 0 0.24" rpy="0 0 0" />
     <parent link="chassis_link" />
     <child link="hokuyo_link" />
   </joint>
 
   <link name="hokuyo_link">
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 1.0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <box size="0.05 0.05 0.05" />
       </geometry>
@@ -52,19 +52,19 @@
 
   <link name="chassis_link">
     <inertial>
-      <origin rpy="0 0 0" xyz="1.04282e-06 0.07307 0.1816" />
+      <origin rpy="0 0 0" xyz="0.07307 1.04282e-06 0.1816" />
       <mass value="1580" />
-      <inertia ixx="1997.8579" ixy="-3e-05" ixz="-1e-06" iyy="442.7692" iyz="62.5206" izz="2238.0524" />
+      <inertia ixx="442.7692" ixy="3e-05" ixz="62.5206" iyy="1997.8579" iyz="1e-06" izz="2238.0524" />
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0" />
+      <origin rpy="0 0 -1.5708" xyz="0 0 0" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/chassis_link.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="silver" />
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0" />
+      <origin rpy="0 0 -1.5708" xyz="0 0 0" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/chassis_link.stl" scale="0.001 0.001 0.001" />
       </geometry>
@@ -72,21 +72,21 @@
   </link>
 
   <joint name="spoiler_joint" type="fixed">
-    <origin xyz="0 0.05 -0.05" rpy="1.5708 0 3.14159" />
+    <origin xyz="0.05 0 -0.05" rpy="0 0 0" />
     <parent link="chassis_link" />
     <child link="spoiler_link" />
   </joint>
 
   <link name="spoiler_link">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0" />
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/spoiler.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="silver" />
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0" />
+      <origin rpy="1.5708 0 1.5708" xyz="0 0 0" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/spoiler.stl" scale="0.001 0.001 0.001" />
       </geometry>
@@ -97,12 +97,12 @@
 
   <link name="br_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="-0.0377 1.5929e-07 -1.5929e-07" />
+      <origin rpy="0 0 -1.5708" xyz="1.5929e-07 0.0377 -1.5929e-07" />
       <mass value="24.5" />
-      <inertia ixx="1.845139" ixy="-0.0" ixz="-0.0" iyy="1.049606" iyz="0.0" izz="1.049606" />
+      <inertia ixx="1.049606" ixy="0.0" ixz="0.0" iyy="1.845139" iyz="0.0" izz="1.049606" />
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="-0.8750 1.0136 0.1444" />
+      <origin rpy="0 0 -1.5708" xyz="1.0136 0.8750 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/br_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
@@ -115,7 +115,7 @@
         <mesh filename="file://$(find description)/meshes/br_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       -->
-      <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
       <geometry>
         <cylinder radius="0.3425" length="0.22"/>
       </geometry>
@@ -124,12 +124,12 @@
 
   <link name="bl_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="-0.0377 1.5929e-07 -1.5929e-07" />
+      <origin rpy="0 0 -1.5708" xyz="1.5929e-07 -0.0377 -1.5929e-07" />
       <mass value="24.5" />
-      <inertia ixx="1.845139" ixy="-0.0" ixz="-0.0" iyy="1.049606" iyz="0.0" izz="1.049606" />
+      <inertia ixx="1.049606" ixy="0.0" ixz="0.0" iyy="1.845139" iyz="0.0" izz="1.049606" />
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0.8750 1.0136 0.1444" />
+      <origin rpy="0 0 -1.5708" xyz="1.0136 -0.8750 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/bl_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
@@ -142,7 +142,7 @@
         <mesh filename="file://$(find description)/meshes/bl_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       -->
-      <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
       <geometry>
         <cylinder radius="0.3425" length="0.22"/>
       </geometry>
@@ -151,19 +151,19 @@
 
   <link name="fr_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="-0.0377 1.5929e-07 -1.5929e-07" />
+      <origin rpy="0 0 -1.5708" xyz="1.5929e-07 0.0377 -1.5929e-07" />
       <mass value="24.5" />
-      <inertia ixx="1.845139" ixy="-0.0" ixz="-0.0" iyy="1.049606" iyz="0.0" izz="1.049606" />
+      <inertia ixx="1.049606" ixy="-0.0" ixz="0.0" iyy="1.845139" iyz="0.0" izz="1.049606" />
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="-0.8750 -1.5174 0.1444" />
+      <origin rpy="0 0 -1.5708" xyz="-1.5174 0.8750 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/fr_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkgrey" />
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="-0.8750 -1.5174 0.1444" />
+      <origin rpy="0 0 -1.5708" xyz="-1.5174 0.8750 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/fr_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
@@ -172,19 +172,19 @@
 
   <link name="fl_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="-0.0377 1.5929e-07 -1.5929e-07" />
+      <origin rpy="0 0 -1.5708" xyz="1.5929e-07 -0.0377 -1.5929e-07" />
       <mass value="24.5" />
-      <inertia ixx="1.845139" ixy="-0.0" ixz="-0.0" iyy="1.049606" iyz="0.0" izz="1.049606" />
+      <inertia ixx="1.049606" ixy="0.0" ixz="0.0" iyy="1.845139" iyz="0.0" izz="1.049606" />
     </inertial>
     <visual>
-      <origin rpy="0 0 0" xyz="0.8750 -1.5174 0.1444" />
+      <origin rpy="0 0 -1.5708" xyz="-1.5174 -0.8750 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/fl_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="darkgrey" />
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0.8750 -1.5174 0.1444" />
+      <origin rpy="0 0 -1.5708" xyz="-1.5174 -0.8750 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/fl_1.stl" scale="0.001 0.001 0.001" />
       </geometry>
@@ -193,7 +193,7 @@
 
   <link name="r_steer_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="0.003381 1.5929e-07 0.02162" />
+      <origin rpy="0 0 0" xyz="1.5929e-07 -0.003381 0.02162" />
       <mass value="1" />
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
     </inertial>
@@ -201,42 +201,42 @@
 
   <link name="l_steer_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="0.003381 1.5929e-07 0.02162" />
+      <origin rpy="0 0 0" xyz="1.5929e-07 0.003381 0.02162" />
       <mass value="1" />
       <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
     </inertial>
   </link>
 
   <joint name="br_axle" type="continuous">
-    <origin rpy="0 0 0" xyz="0.8750 -1.013637 -0.144363" />
+    <origin rpy="0 0 0" xyz="-1.013637 -0.8750 -0.144363" />
     <parent link="chassis_link" />
     <child link="br_1" />
-    <axis xyz="-1.0 0.0 0.0" />
+    <axis xyz="0.0 1.0 0.0" />
   </joint>
 
   <joint name="bl_axle" type="continuous">
-    <origin rpy="0 0 0" xyz="-0.8750 -1.013637 -0.144363" />
+    <origin rpy="0 0 0" xyz="-1.013637 0.8750 -0.144363" />
     <parent link="chassis_link" />
     <child link="bl_1" />
-    <axis xyz="-1.0 0.0 0.0" />
+    <axis xyz="0.0 1.0 0.0" />
   </joint>
 
   <joint name="fr_axle" type="continuous">
-    <origin rpy="0 0 0" xyz="0.05 0.0 0.0" />
+    <origin rpy="0 0 0" xyz="0.0 -0.05 0.0" />
     <parent link="r_steer_1" />
     <child link="fr_1" />
-    <axis xyz="-1.0 0.0 0.0" />
+    <axis xyz="0.0 1.0 0.0" />
   </joint>
 
   <joint name="fl_axle" type="continuous">
-    <origin rpy="0 0 0" xyz="-0.05 0.0 0.0" />
+    <origin rpy="0 0 0" xyz="0.0 0.05 0.0" />
     <parent link="l_steer_1" />
     <child link="fl_1" />
-    <axis xyz="-1.0 0.0 0.0" />
+    <axis xyz="0.0 1.0 0.0" />
   </joint>
 
   <joint name="r_steer" type="revolute">
-    <origin rpy="0 0 0" xyz="0.8250 1.517363 -0.144363" />
+    <origin rpy="0 0 0" xyz="1.517363 -0.8250 -0.144363" />
     <parent link="chassis_link" />
     <child link="r_steer_1" />
     <axis xyz="0.0 0.0 1.0" />
@@ -245,7 +245,7 @@
   </joint>
 
   <joint name="l_steer" type="revolute">
-    <origin rpy="0 0 0" xyz="-0.8250 1.517363 -0.144363" />
+    <origin rpy="0 0 0" xyz="1.517363 0.8250 -0.144363" />
     <parent link="chassis_link" />
     <child link="l_steer_1" />
     <axis xyz="0.0 0.0 1.0" />
