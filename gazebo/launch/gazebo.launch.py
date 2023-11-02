@@ -3,6 +3,7 @@ from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchD
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, EnvironmentVariable, FindExecutable, LaunchConfiguration, PathJoinSubstitution
+from launch.conditions import IfCondition
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
@@ -13,6 +14,8 @@ from pathlib import Path
 ARGUMENTS = [
     DeclareLaunchArgument('world_path', default_value='',
                           description='The world path, by default is empty.world'),
+    DeclareLaunchArgument('use_ros2_control', default_value='false',
+                          description='Use ros2_control (:=true) or gazebo_control (:=false), by default is gazebo_control'),
 ]
 
 
@@ -20,6 +23,7 @@ def generate_launch_description():
 
     # Launch args
     world_path = LaunchConfiguration('world_path')
+    use_ros2_control = LaunchConfiguration('use_ros2_control')
 
     config_robot_controller = PathJoinSubstitution(
         [FindPackageShare("control"), "config", "control.yaml"]
@@ -33,6 +37,9 @@ def generate_launch_description():
             PathJoinSubstitution(
                 [FindPackageShare("description"), "urdf", "autocar.urdf.xacro"]
             ),
+            " ",
+            "use_ros2_control:=",
+            use_ros2_control,
             " ",
             "gazebo_controllers:=",
             config_robot_controller,
@@ -87,6 +94,7 @@ def generate_launch_description():
         executable='spawner',
         arguments=['joint_state_broadcaster', '-c', '/controller_manager'],
         output='screen',
+        condition=IfCondition(use_ros2_control),
     )
 
     spawn_ackermann_steering_controller = Node(
@@ -94,6 +102,7 @@ def generate_launch_description():
         executable='spawner',
         arguments=['ackermann_steering_controller', '-c', '/controller_manager'],
         output='screen',
+        condition=IfCondition(use_ros2_control),
     ) # ALC231101 - TODO: Remap /ackermann_steering_controller/odometry:=/odom
 
     # Make sure spawn_ackermann_steering_controller starts after spawn_joint_state_broadcaster
@@ -110,6 +119,7 @@ def generate_launch_description():
         executable='relay',
         arguments=['/ackermann_steering_controller/tf_odometry', '/tf'],
         output='screen',
+        condition=IfCondition(use_ros2_control),
     )
 
     # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
