@@ -17,7 +17,7 @@ def generate_launch_description():
                 [FindPackageShare("description"), "urdf", "autocar.urdf.xacro"]
             ),
         ]
-    ).perform(LaunchContext())
+    )
 
     robot_description = {"robot_description": robot_description_content,
                          'use_sim_time': True}

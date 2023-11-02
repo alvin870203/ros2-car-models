@@ -37,7 +37,7 @@ def generate_launch_description():
             "gazebo_controllers:=",
             config_robot_controller,
         ]
-    ).perform(LaunchContext())
+    )
     robot_description = {"robot_description": robot_description_content}
 
     node_robot_state_publisher = Node(

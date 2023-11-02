@@ -93,7 +93,7 @@
     </collision>
   </link>
 
-  <!-- ALC231031 - TODO: Revise friction, dynamics, dampling, slides, shere wheel, etc. -->
+  <!-- ALC231031 - TODO - Revise friction, dynamics, dampling, slides, shere wheel, etc. -->
 
   <link name="br_1">
     <inertial>
@@ -109,7 +109,7 @@
       <material name="darkgrey" />
     </visual>
     <collision>
-      <!-- NOTE: Somehow libgazebo_ros_ackermann_drive.so don't work with collision using this custom mesh. Only built-in cylinder and sphere works, and built-in box don't work either.
+      <!-- NOTE - Somehow libgazebo_ros_ackermann_drive.so don't work with collision using this custom mesh. Only built-in cylinder and sphere works, and built-in box don't work either.
       <origin rpy="0 0 0" xyz="-0.8750 1.0136 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/br_1.stl" scale="0.001 0.001 0.001" />
@@ -136,7 +136,7 @@
       <material name="darkgrey" />
     </visual>
     <collision>
-      <!-- NOTE: Somehow libgazebo_ros_ackermann_drive.so don't work with collision using this custom mesh. Only built-in cylinder and sphere works, and built-in box don't work either.
+      <!-- NOTE - Somehow libgazebo_ros_ackermann_drive.so don't work with collision using this custom mesh. Only built-in cylinder and sphere works, and built-in box don't work either.
       <origin rpy="0 0 0" xyz="0.8750 1.0136 0.1444" />
       <geometry>
         <mesh filename="file://$(find description)/meshes/bl_1.stl" scale="0.001 0.001 0.001" />
