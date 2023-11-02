@@ -104,6 +104,14 @@ def generate_launch_description():
         output='screen',
     )
 
+    # Relay odom tf topic because it can not be remapped by ackermann_steering_controller
+    relay_topic_to_tf_node = Node(
+        package='topic_tools',
+        executable='relay',
+        arguments=['/ackermann_steering_controller/tf_odometry', '/tf'],
+        output='screen',
+    )
+
     # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
     # # Launch robot_control/control.launch.py which is just robot_localization.
     # launch_robot_control = IncludeLaunchDescription(
@@ -125,6 +133,7 @@ def generate_launch_description():
     ld.add_action(gzserver)
     ld.add_action(gzclient)
     ld.add_action(spawn_robot)
+    ld.add_action(relay_topic_to_tf_node)
     # ld.add_action(launch_robot_control)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
     # ld.add_action(launch_robot_teleop_base)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
 

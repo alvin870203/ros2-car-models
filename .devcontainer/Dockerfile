@@ -21,7 +21,8 @@ RUN curl -sSL http://get.gazebosim.org | sh
 # Install common ros2 packages
 RUN apt-get install -y ros-humble-xacro ros-humble-joint-state-publisher-gui ros-humble-rviz2 \
                        ros-humble-gazebo-ros-pkgs ros-humble-ros2-control ros-humble-ros2-controllers \
-                       ros-humble-gazebo-ros2-control ros-humble-effort-controllers ros-humble-teleop-twist-keyboard
+                       ros-humble-gazebo-ros2-control ros-humble-effort-controllers ros-humble-teleop-twist-keyboard \
+                       ros-humble-topic-tools
 
 ENV SHELL /bin/bash
 
