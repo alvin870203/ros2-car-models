@@ -93,7 +93,7 @@
     </collision>
   </link>
 
-  <!-- ALC231031 - TODO - Revise friction, dynamics, dampling, slides, shere wheel, etc. -->
+  <!-- ALC231031 - TODO - Revise friction, dynamics, slides, etc. -->
 
   <link name="br_1">
     <inertial>
@@ -240,7 +240,7 @@
     <parent link="chassis_link" />
     <child link="r_steer_1" />
     <axis xyz="0.0 0.0 1.0" />
-    <dynamics damping="0.01" friction="0.01" />
+    <dynamics damping="50.0" friction="0.01" />
     <limit effort="1000.0" lower="-0.95" upper="0.95" velocity="100" />
   </joint>
 
@@ -249,7 +249,7 @@
     <parent link="chassis_link" />
     <child link="l_steer_1" />
     <axis xyz="0.0 0.0 1.0" />
-    <dynamics damping="0.01" friction="0.01" />
+    <dynamics damping="50.0" friction="0.01" />
     <limit effort="1000.0" lower="-0.95" upper="0.95" velocity="100" />
   </joint>
 
