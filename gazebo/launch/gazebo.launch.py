@@ -17,7 +17,9 @@ ARGUMENTS = [
     DeclareLaunchArgument('use_ros2_control', default_value='false',
                           description='Use ros2_control (:=true) or gazebo_control (:=false), by default is gazebo_control'),
     DeclareLaunchArgument('ros2_control_config', default_value='ackermann_control.yaml',
-                          description='The file name of the ros2_control config, by default is ackermann_control.yaml'),
+                          description='The file name of the ros2_control config, by default is ackermann_control.xacro'),
+    DeclareLaunchArgument('gazebo_control_config', default_value='autocar_ackermann_gazebo_control.yaml',
+                          description='The file name of the gazebo_control config, by default is autocar_ackermann_gazebo_control.xacro'),
 ]
 
 
@@ -27,6 +29,7 @@ def generate_launch_description():
     world_path = LaunchConfiguration('world_path')
     use_ros2_control = LaunchConfiguration('use_ros2_control')
     ros2_control_config = LaunchConfiguration('ros2_control_config')
+    gazebo_control_config = LaunchConfiguration('gazebo_control_config')
 
     config_robot_controller = PathJoinSubstitution(
         [FindPackageShare("control"), "config", ros2_control_config]
@@ -46,6 +49,9 @@ def generate_launch_description():
             " ",
             "gazebo_controllers:=",
             config_robot_controller,
+            " ",
+            "gazebo_control_config:=",
+            gazebo_control_config,
         ]
     )
     robot_description = {"robot_description": robot_description_content}
