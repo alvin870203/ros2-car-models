@@ -37,9 +37,12 @@
     "mounts": [
        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
         "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached",
-        "source=${localWorkspaceFolder}/../cache/humble/build,target=/home/ws/build,type=bind",
-        "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/ws/install,type=bind",
-        "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/ws/log,type=bind",
+        // "source=${localWorkspaceFolder}/../cache/humble/build,target=/home/ws/build,type=bind",
+        // "source=${localWorkspaceFolder}/../cache/humble/install,target=/home/ws/install,type=bind",
+        // "source=${localWorkspaceFolder}/../cache/humble/log,target=/home/ws/log,type=bind",
+        "source=${localWorkspaceFolder}/../cache/iron/build,target=/home/ws/build,type=bind",
+        "source=${localWorkspaceFolder}/../cache/iron/install,target=/home/ws/install,type=bind",
+        "source=${localWorkspaceFolder}/../cache/iron/log,target=/home/ws/log,type=bind",
         "source=${localWorkspaceFolder}/.bash_history,target=/home/alvin/.bash_history,type=bind,consistency=cached"
     ],
     "postCreateCommand": "rosdep update && rosdep install --from-paths src --ignore-src -y && sudo chown -R alvin /home/ws/"

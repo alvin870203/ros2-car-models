@@ -1,4 +1,5 @@
-FROM ros:humble
+# FROM ros:humble
+FROM ros:iron
 ARG USERNAME=USERNAME
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
@@ -19,10 +20,14 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y curl
 RUN curl -sSL http://get.gazebosim.org | sh
 # Install common ros2 packages
-RUN apt-get install -y ros-humble-xacro ros-humble-joint-state-publisher-gui ros-humble-rviz2 \
-                       ros-humble-gazebo-ros-pkgs ros-humble-ros2-control ros-humble-ros2-controllers \
-                       ros-humble-gazebo-ros2-control ros-humble-effort-controllers ros-humble-teleop-twist-keyboard \
-                       ros-humble-topic-tools
+# RUN apt-get install -y ros-humble-xacro ros-humble-joint-state-publisher-gui ros-humble-rviz2 \
+#                        ros-humble-gazebo-ros-pkgs ros-humble-ros2-control ros-humble-ros2-controllers \
+#                        ros-humble-gazebo-ros2-control ros-humble-effort-controllers ros-humble-teleop-twist-keyboard \
+#                        ros-humble-topic-tools ros-humble-rqt*
+RUN apt-get install -y ros-iron-xacro ros-iron-joint-state-publisher-gui ros-iron-rviz2 \
+                       ros-iron-gazebo-ros-pkgs ros-iron-ros2-control ros-iron-ros2-controllers \
+                       ros-iron-gazebo-ros2-control ros-iron-effort-controllers ros-iron-teleop-twist-keyboard \
+                       ros-iron-topic-tools ros-iron-rqt*
 
 ENV SHELL /bin/bash
 
