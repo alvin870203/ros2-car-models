@@ -110,21 +110,34 @@ def generate_launch_description():
                                                                 " == 'ackermann_control.yaml'"]))),
     ) # ALC231101 - TODO: Remap /ackermann_steering_controller/odometry:=/odom
 
-    # Make sure spawn_ackermann_steering_controller starts after spawn_joint_state_broadcaster
-    ackermann_steering_controller_spawn_callback = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=spawn_joint_state_broadcaster,
-            on_exit=[spawn_ackermann_steering_controller],
-        )
-    )
-
     # Relay odom tf topic because it can not be remapped by ackermann_steering_controller
     relay_topic_to_tf_node = Node(
         package='topic_tools',
         executable='relay',
         arguments=['/ackermann_steering_controller/tf_odometry', '/tf'],
         output='screen',
-        condition=IfCondition(use_ros2_control),
+        condition=IfCondition(AndSubstitution(use_ros2_control,
+                                              PythonExpression(["'", ros2_control_config, "'",
+                                                                " == 'ackermann_control.yaml'"]))),
+    )
+
+    spawn_rear_joints_velocity_controller = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['rear_joints_velocity_controller', '-c', '/controller_manager'],
+        output='screen',
+        condition=IfCondition(AndSubstitution(use_ros2_control,
+                                              PythonExpression(["'", ros2_control_config, "'",
+                                                                " == 'joint_control.yaml'"]))),
+    )
+
+    # Make sure all the other controller starts after spawn_joint_state_broadcaster
+    controllers_spawn_callback = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=spawn_joint_state_broadcaster,
+            on_exit=[spawn_ackermann_steering_controller,
+                     spawn_rear_joints_velocity_controller],
+        )
     )
 
     # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
@@ -147,7 +160,7 @@ def generate_launch_description():
     ld.add_action(gzclient)
     ld.add_action(spawn_robot)
     ld.add_action(spawn_joint_state_broadcaster)
-    ld.add_action(ackermann_steering_controller_spawn_callback)
+    ld.add_action(controllers_spawn_callback)
     ld.add_action(relay_topic_to_tf_node)
     # ld.add_action(launch_robot_control)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
     # ld.add_action(launch_robot_teleop_base)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
