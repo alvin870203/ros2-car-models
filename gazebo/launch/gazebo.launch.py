@@ -16,6 +16,8 @@ ARGUMENTS = [
                           description='The world path, by default is empty.world'),
     DeclareLaunchArgument('use_ros2_control', default_value='false',
                           description='Use ros2_control (:=true) or gazebo_control (:=false), by default is gazebo_control'),
+    DeclareLaunchArgument('ros2_control_config', default_value='ackermann_ros2_control.yaml',
+                          description='The file name of the ros2_control config, by default is ackermann_ros2_control.yaml'),
 ]
 
 
@@ -24,9 +26,10 @@ def generate_launch_description():
     # Launch args
     world_path = LaunchConfiguration('world_path')
     use_ros2_control = LaunchConfiguration('use_ros2_control')
+    ros2_control_config = LaunchConfiguration('ros2_control_config')
 
     config_robot_controller = PathJoinSubstitution(
-        [FindPackageShare("control"), "config", "control.yaml"]
+        [FindPackageShare("control"), "config", ros2_control_config]
     )
 
     # Get URDF via xacro
