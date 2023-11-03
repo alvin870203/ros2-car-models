@@ -8,7 +8,7 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
 
     use_ros2_control = "true" # Use ros2_control instead of gazebo_control
-    ros2_control_config = "ackermann_control.yaml"
+    ros2_control_config = "joint_ros2_control.yaml"
 
     world_file = PathJoinSubstitution(
         [FindPackageShare("gazebo"),

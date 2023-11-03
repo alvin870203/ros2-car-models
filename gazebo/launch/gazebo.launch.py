@@ -2,8 +2,8 @@ from launch import LaunchDescription, LaunchContext
 from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription, RegisterEventHandler, SetEnvironmentVariable
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import Command, EnvironmentVariable, FindExecutable, LaunchConfiguration, PathJoinSubstitution
-from launch.conditions import IfCondition
+from launch.substitutions import Command, EnvironmentVariable, FindExecutable, LaunchConfiguration, PathJoinSubstitution, AndSubstitution, PythonExpression
+from launch.conditions import IfCondition, LaunchConfigurationEquals
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
@@ -16,8 +16,8 @@ ARGUMENTS = [
                           description='The world path, by default is empty.world'),
     DeclareLaunchArgument('use_ros2_control', default_value='false',
                           description='Use ros2_control (:=true) or gazebo_control (:=false), by default is gazebo_control'),
-    DeclareLaunchArgument('ros2_control_config', default_value='ackermann_ros2_control.yaml',
-                          description='The file name of the ros2_control config, by default is ackermann_ros2_control.yaml'),
+    DeclareLaunchArgument('ros2_control_config', default_value='ackermann_control.yaml',
+                          description='The file name of the ros2_control config, by default is ackermann_control.yaml'),
 ]
 
 
@@ -105,7 +105,9 @@ def generate_launch_description():
         executable='spawner',
         arguments=['ackermann_steering_controller', '-c', '/controller_manager'],
         output='screen',
-        condition=IfCondition(use_ros2_control),
+        condition=IfCondition(AndSubstitution(use_ros2_control,
+                                              PythonExpression(["'", ros2_control_config, "'",
+                                                                " == 'ackermann_control.yaml'"]))),
     ) # ALC231101 - TODO: Remap /ackermann_steering_controller/odometry:=/odom
 
     # Make sure spawn_ackermann_steering_controller starts after spawn_joint_state_broadcaster
