@@ -6,6 +6,9 @@ controller_manager:
     rear_joints_velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
 
+    front_joints_velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
@@ -14,6 +17,12 @@ rear_joints_velocity_controller:
     joints:
       - bl_axle
       - br_axle
+
+front_joints_velocity_controller:
+  ros__parameters:
+    joints:
+      - fl_axle
+      - fr_axle
 
 # joint_state_broadcaster:
 #   ros__parameters:

@@ -131,12 +131,23 @@ def generate_launch_description():
                                                                 " == 'joint_control.yaml'"]))),
     )
 
+    spawn_front_joints_velocity_controller = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=['front_joints_velocity_controller', '-c', '/controller_manager'],
+        output='screen',
+        condition=IfCondition(AndSubstitution(use_ros2_control,
+                                              PythonExpression(["'", ros2_control_config, "'",
+                                                                " == 'joint_control.yaml'"]))),
+    )
+
     # Make sure all the other controller starts after spawn_joint_state_broadcaster
     controllers_spawn_callback = RegisterEventHandler(
         event_handler=OnProcessExit(
             target_action=spawn_joint_state_broadcaster,
             on_exit=[spawn_ackermann_steering_controller,
-                     spawn_rear_joints_velocity_controller],
+                     spawn_rear_joints_velocity_controller,
+                     spawn_front_joints_velocity_controller],
         )
     )
 
