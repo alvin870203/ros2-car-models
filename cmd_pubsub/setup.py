@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'joint_gazebo_control_cmd = cmd_pubsub.joint_gazebo_control_cmd:main',
+            'joint_ros2_control_cmd = cmd_pubsub.joint_ros2_control_cmd:main',
         ],
     },
 )
