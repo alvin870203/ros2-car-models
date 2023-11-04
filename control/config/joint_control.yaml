@@ -3,10 +3,7 @@ controller_manager:
     update_rate: 30 # Hz
     use_sim_time: true
 
-    rear_joints_velocity_controller:
-      type: velocity_controllers/JointGroupVelocityController
-
-    front_joints_velocity_controller:
+    axle_joints_velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
 
     front_steers_position_controller:
@@ -15,17 +12,13 @@ controller_manager:
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-rear_joints_velocity_controller:
-  ros__parameters:
-    joints:
-      - bl_axle
-      - br_axle
-
-front_joints_velocity_controller:
+axle_joints_velocity_controller:
   ros__parameters:
     joints:
       - fl_axle
       - fr_axle
+      - bl_axle
+      - br_axle
 
 front_steers_position_controller:
   ros__parameters:

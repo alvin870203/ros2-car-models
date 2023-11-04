@@ -127,20 +127,10 @@ def generate_launch_description():
                                                                 " == 'ackermann_control.yaml'"]))),
     )
 
-    spawn_rear_joints_velocity_controller = Node(
+    spawn_axle_joints_velocity_controller = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['rear_joints_velocity_controller', '-c', '/controller_manager'],
-        output='screen',
-        condition=IfCondition(AndSubstitution(use_ros2_control,
-                                              PythonExpression(["'", ros2_control_config, "'",
-                                                                " == 'joint_control.yaml'"]))),
-    )
-
-    spawn_front_joints_velocity_controller = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['front_joints_velocity_controller', '-c', '/controller_manager'],
+        arguments=['axle_joints_velocity_controller', '-c', '/controller_manager'],
         output='screen',
         condition=IfCondition(AndSubstitution(use_ros2_control,
                                               PythonExpression(["'", ros2_control_config, "'",
@@ -162,8 +152,7 @@ def generate_launch_description():
         event_handler=OnProcessExit(
             target_action=spawn_joint_state_broadcaster,
             on_exit=[spawn_ackermann_steering_controller,
-                     spawn_rear_joints_velocity_controller,
-                     spawn_front_joints_velocity_controller,
+                     spawn_axle_joints_velocity_controller,
                      spawn_front_steers_position_controller],
         )
     )
