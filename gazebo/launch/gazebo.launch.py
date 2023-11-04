@@ -17,8 +17,8 @@ ARGUMENTS = [
     DeclareLaunchArgument('use_ros2_control', default_value='false',
                           description='Use ros2_control (:=true) or gazebo_control (:=false), by default is gazebo_control'),
     DeclareLaunchArgument('ros2_control_config', default_value='ackermann_control.yaml',
-                          description='The file name of the ros2_control config, by default is ackermann_control.xacro'),
-    DeclareLaunchArgument('gazebo_control_config', default_value='autocar_ackermann_gazebo_control.yaml',
+                          description='The file name of the ros2_control config, by default is ackermann_control.yaml'),
+    DeclareLaunchArgument('gazebo_control_config', default_value='autocar_ackermann_gazebo_control.xacro',
                           description='The file name of the gazebo_control config, by default is autocar_ackermann_gazebo_control.xacro'),
 ]
 
