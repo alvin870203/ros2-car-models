@@ -13,7 +13,12 @@
 
 
   <!-- ROBOT DEFINITION -->
-  <link name="base_link" />
+  <link name="base_link">
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
 
   <joint name="chassis_link_joint" type="fixed">
     <origin xyz="0 0 0.4936" rpy="0 0 0" />
@@ -52,9 +57,10 @@
 
   <link name="chassis_link">
     <inertial>
-      <origin rpy="0 0 0" xyz="0.07307 1.04282e-06 0.1816" />
+      <!-- NOTE - The key to avoid non-driven wheel from slipping is to make the center of mass of the chassis at about the same height of the center of the wheel. -->
+      <origin rpy="0 0 0" xyz="0.07307 0.0 -0.1" />
       <mass value="1580" />
-      <inertia ixx="442.7692" ixy="3e-05" ixz="62.5206" iyy="1997.8579" iyz="1e-06" izz="2238.0524" />
+      <inertia ixx="442.7692" ixy="0.0" ixz="0.0" iyy="1997.8579" iyz="0.0" izz="2238.0524" />
     </inertial>
     <visual>
       <origin rpy="0 0 -1.5708" xyz="0 0 0" />
@@ -93,13 +99,12 @@
     </collision>
   </link>
 
-  <!-- ALC231031 - TODO - Revise friction, dynamics, slides, etc. -->
-
   <link name="br_1">
     <inertial>
-      <origin rpy="0 0 -1.5708" xyz="1.5929e-07 0.0377 -1.5929e-07" />
-      <mass value="24.5" />
-      <inertia ixx="1.845139" ixy="0.0" ixz="0.0" iyy="1.049606" iyz="0.0" izz="1.049606" />
+      <origin rpy="0 0 -1.5708" xyz="0 0 0" />
+      <!-- NOTE - The key to avoid non-driven wheel from slipping is to make sure the mass (or moment) not too large. -->
+      <mass value="11" />
+      <inertia ixx="0.58631238" ixy="0.0" ixz="0.0" iyy="0.33552910" iyz="0.0" izz="0.33552910" />
     </inertial>
     <visual>
       <origin rpy="0 0 -1.5708" xyz="1.0136 0.8750 0.1444" />
@@ -108,7 +113,7 @@
       </geometry>
       <material name="darkgrey" />
     </visual>
-    <collision>
+    <collision name="br_1_collision">
       <!-- NOTE - Somehow libgazebo_ros_ackermann_drive.so don't work with collision using this custom mesh. Only built-in cylinder and sphere works, and built-in box don't work either.
       <origin rpy="0 0 0" xyz="-0.8750 1.0136 0.1444" />
       <geometry>
@@ -124,9 +129,10 @@
 
   <link name="bl_1">
     <inertial>
-      <origin rpy="0 0 -1.5708" xyz="1.5929e-07 -0.0377 -1.5929e-07" />
-      <mass value="24.5" />
-      <inertia ixx="1.845139" ixy="0.0" ixz="0.0" iyy="1.049606" iyz="0.0" izz="1.049606" />
+      <origin rpy="0 0 -1.5708" xyz="0 0 0" />
+      <!-- NOTE - The key to avoid non-driven wheel from slipping is to make sure the mass (or moment) not too large. -->
+      <mass value="11" />
+      <inertia ixx="0.58631238" ixy="0.0" ixz="0.0" iyy="0.33552910" iyz="0.0" izz="0.33552910" />
     </inertial>
     <visual>
       <origin rpy="0 0 -1.5708" xyz="1.0136 -0.8750 0.1444" />
@@ -135,7 +141,7 @@
       </geometry>
       <material name="darkgrey" />
     </visual>
-    <collision>
+    <collision name="bl_1_collision">
       <!-- NOTE - Somehow libgazebo_ros_ackermann_drive.so don't work with collision using this custom mesh. Only built-in cylinder and sphere works, and built-in box don't work either.
       <origin rpy="0 0 0" xyz="0.8750 1.0136 0.1444" />
       <geometry>
@@ -151,9 +157,10 @@
 
   <link name="fr_1">
     <inertial>
-      <origin rpy="0 0 -1.5708" xyz="1.5929e-07 0.0377 -1.5929e-07" />
-      <mass value="24.5" />
-      <inertia ixx="0.01845139" ixy="0.0" ixz="0.0" iyy="0.01049606" iyz="0.0" izz="0.01049606" />
+      <origin rpy="0 0 -1.5708" xyz="0 0 0" />
+      <!-- NOTE - The key to avoid non-driven wheel from slipping is to make sure the mass (or moment) not too large. -->
+      <mass value="11" />
+      <inertia ixx="0.58631238" ixy="0.0" ixz="0.0" iyy="0.33552910" iyz="0.0" izz="0.33552910" />
     </inertial>
     <visual>
       <origin rpy="0 0 -1.5708" xyz="-1.5174 0.8750 0.1444" />
@@ -162,7 +169,7 @@
       </geometry>
       <material name="darkgrey" />
     </visual>
-    <collision>
+    <collision name="fr_1_collision">
       <origin xyz="0 0 0" rpy="1.5708 0 0"/>
       <geometry>
         <sphere radius="0.3425"/>
@@ -172,9 +179,10 @@
 
   <link name="fl_1">
     <inertial>
-      <origin rpy="0 0 -1.5708" xyz="1.5929e-07 -0.0377 -1.5929e-07" />
-      <mass value="24.5" />
-      <inertia ixx="0.01845139" ixy="0.0" ixz="0.0" iyy="0.01049606" iyz="0.0" izz="0.01049606" />
+      <origin rpy="0 0 -1.5708" xyz="0 0 0" />
+      <!-- NOTE - The key to avoid non-driven wheel from slipping is to make sure the mass (or moment) not too large. -->
+      <mass value="11" />
+      <inertia ixx="0.58631238" ixy="0.0" ixz="0.0" iyy="0.33552910" iyz="0.0" izz="0.33552910" />
     </inertial>
     <visual>
       <origin rpy="0 0 -1.5708" xyz="-1.5174 -0.8750 0.1444" />
@@ -183,7 +191,7 @@
       </geometry>
       <material name="darkgrey" />
     </visual>
-    <collision>
+    <collision name="fl_1_collision">
       <origin xyz="0 0 0" rpy="1.5708 0 0"/>
       <geometry>
         <sphere radius="0.3425"/>
@@ -193,17 +201,17 @@
 
   <link name="r_steer_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="1.5929e-07 -0.003381 0.02162" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
       <mass value="1" />
-      <inertia ixx="0.14583300" ixy="0.0" ixz="0.0" iyy="0.14583300" iyz="0.0" izz="0.12500000" />
+      <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.004"/>
     </inertial>
   </link>
 
   <link name="l_steer_1">
     <inertial>
-      <origin rpy="0 0 0" xyz="1.5929e-07 0.003381 0.02162" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
       <mass value="1" />
-      <inertia ixx="0.14583300" ixy="0.0" ixz="0.0" iyy="0.14583300" iyz="0.0" izz="0.12500000" />
+      <inertia ixx="0.004" ixy="0.0" ixz="0.0" iyy="0.004" iyz="0.0" izz="0.004"/>
     </inertial>
   </link>
 
@@ -222,14 +230,16 @@
   </joint>
 
   <joint name="fr_axle" type="continuous">
-    <origin rpy="0 0 0" xyz="0.0 -0.05 0.0" />
+    <!-- NOTE - The key to avoid non-driven wheels split out is to make sure the steering joint is at the same location as the wheel rotation joint (or the center of mass of it). -->
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
     <parent link="r_steer_1" />
     <child link="fr_1" />
     <axis xyz="0.0 1.0 0.0" />
   </joint>
 
   <joint name="fl_axle" type="continuous">
-    <origin rpy="0 0 0" xyz="0.0 0.05 0.0" />
+    <!-- NOTE - The key to avoid non-driven wheels split out is to make sure the steering joint is at the same location as the wheel rotation joint (or the center of mass of it). -->
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
     <parent link="l_steer_1" />
     <child link="fl_1" />
     <axis xyz="0.0 1.0 0.0" />
@@ -271,29 +281,41 @@
 
   <gazebo reference="br_1">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.7</mu1>
-    <mu2>1.7</mu2>
+    <!-- NOTE - The key to avoid non-driven wheel from slipping is to make sure the mu1 & mu2 is large enough, and make sure the kp is specified as here. (minDepth seems to have no effect) -->
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+    <minDepth>0.005</minDepth>
+    <kp>1e8</kp>
     <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="bl_1">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.7</mu1>
-    <mu2>1.7</mu2>
+    <!-- NOTE - The key to avoid non-driven wheel from slipping is to make sure the mu1 & mu2 is large enough, and make sure the kp is specified as here. (minDepth seems to have no effect) -->
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+    <minDepth>0.005</minDepth>
+    <kp>1e8</kp>
     <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="fr_1">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.7</mu1>
-    <mu2>1.7</mu2>
+    <!-- NOTE - The key to avoid non-driven wheel from slipping is to make sure the mu1 & mu2 is large enough, and make sure the kp is specified as here. (minDepth seems to have no effect) -->
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+    <minDepth>0.005</minDepth>
+    <kp>1e8</kp>
     <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="fl_1">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.7</mu1>
-    <mu2>1.7</mu2>
+    <!-- NOTE - The key to avoid non-driven wheel from slipping is to make sure the mu1 & mu2 is large enough, and make sure the kp is specified as here. (minDepth seems to have no effect) -->
+    <mu1>100</mu1>
+    <mu2>100</mu2>
+    <minDepth>0.005</minDepth>
+    <kp>1e8</kp>
     <selfCollide>true</selfCollide>
   </gazebo>
 
