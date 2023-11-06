@@ -18,8 +18,8 @@
       <front_right_joint>fr_axle</front_right_joint>
       <rear_left_joint>bl_axle</rear_left_joint>
       <rear_right_joint>br_axle</rear_right_joint>
-      <left_steering_joint>l_steer</left_steering_joint>
-      <right_steering_joint>r_steer</right_steering_joint>
+      <left_steering_joint>fl_steer</left_steering_joint>
+      <right_steering_joint>fr_steer</right_steering_joint>
       <!-- <steering_wheel_joint>steering_joint</steering_wheel_joint> -->
 
       <!-- Max absolute steer angle for tyre in radians-->

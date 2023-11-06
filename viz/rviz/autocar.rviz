@@ -68,9 +68,13 @@ Visualization Manager:
           Value: true
         hokuyo_link:
           Value: true
-        l_steer_1:
+        fl_steer_1:
           Value: true
-        r_steer_1:
+        fr_steer_1:
+          Value: true
+        bl_steer_1:
+          Value: true
+        br_steer_1:
           Value: true
         spoiler_link:
           Value: true
@@ -88,11 +92,17 @@ Visualization Manager:
               {}
             hokuyo_link:
               {}
-            l_steer_1:
+            fl_steer_1:
               fl_1:
                 {}
-            r_steer_1:
+            fr_steer_1:
               fr_1:
+                {}
+            bl_steer_1:
+              bl_1:
+                {}
+            br_steer_1:
+              br_1:
                 {}
             spoiler_link:
               {}
@@ -150,11 +160,19 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        l_steer_1:
+        fl_steer_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        r_steer_1:
+        fr_steer_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        bl_steer_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        br_steer_1:
           Alpha: 1
           Show Axes: false
           Show Trail: false

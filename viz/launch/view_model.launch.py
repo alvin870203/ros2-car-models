@@ -34,7 +34,8 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(get_package_share_directory(
                 'description'), 'launch/description.launch.py')
-        )
+        ),
+        launch_arguments={'use_4ws': 'true'}.items()
     )
 
     return LaunchDescription(

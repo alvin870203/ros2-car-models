@@ -7,6 +7,7 @@ from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
 
+    use_4ws = "false" # Use front-wheel steer instead of four-wheel steer
     use_ros2_control = "false" # Use gazebo_control instead of ros2_control
     gazebo_control_config = "autocar_ackermann_gazebo_control.xacro"
 
@@ -25,6 +26,7 @@ def generate_launch_description():
     gazebo_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([gazebo_launch]),
         launch_arguments={'world_path': world_file,
+                          'use_4ws': use_4ws,
                           'use_ros2_control': use_ros2_control,
                           'gazebo_control_config': gazebo_control_config}.items(),
     )

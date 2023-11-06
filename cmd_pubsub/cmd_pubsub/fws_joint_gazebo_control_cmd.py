@@ -16,8 +16,8 @@ class MinimalPublisher(Node):
         joints_cmd = JointTrajectory()
 
         joints_cmd.header.frame_id = "base_link"
-        joints_cmd.joint_names = ["l_steer",
-                                  "r_steer",
+        joints_cmd.joint_names = ["fl_steer",
+                                  "fr_steer",
                                   "fl_axle",
                                   "fr_axle",
                                   "bl_axle",

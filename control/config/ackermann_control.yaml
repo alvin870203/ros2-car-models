@@ -18,7 +18,7 @@ ackermann_steering_controller:
     position_feedback: false
     use_stamped_vel: false
     rear_wheels_names: [br_axle, bl_axle]
-    front_wheels_names: [r_steer, l_steer]
+    front_wheels_names: [fr_steer, fl_steer]
     # Following three params have no effect.
     # odom_frame_id: odom
     # base_frame_id: base_link

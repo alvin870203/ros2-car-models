@@ -14,6 +14,8 @@ from pathlib import Path
 ARGUMENTS = [
     DeclareLaunchArgument('world_path', default_value='',
                           description='The world path, by default is empty.world'),
+    DeclareLaunchArgument('use_4ws', default_value='false',
+                          description='Use four-wheel steer (:=true) or front-wheel steer (:=false), by default is front-wheel steer'),
     DeclareLaunchArgument('use_ros2_control', default_value='false',
                           description='Use ros2_control (:=true) or gazebo_control (:=false), by default is gazebo_control'),
     DeclareLaunchArgument('ros2_control_config', default_value='ackermann_control.yaml',
@@ -27,6 +29,7 @@ def generate_launch_description():
 
     # Launch args
     world_path = LaunchConfiguration('world_path')
+    use_4ws = LaunchConfiguration('use_4ws')
     use_ros2_control = LaunchConfiguration('use_ros2_control')
     ros2_control_config = LaunchConfiguration('ros2_control_config')
     gazebo_control_config = LaunchConfiguration('gazebo_control_config')
@@ -43,6 +46,9 @@ def generate_launch_description():
             PathJoinSubstitution(
                 [FindPackageShare("description"), "urdf", "autocar.urdf.xacro"]
             ),
+            " ",
+            "use_4ws:=",
+            use_4ws,
             " ",
             "use_ros2_control:=",
             use_ros2_control,
@@ -133,18 +139,18 @@ def generate_launch_description():
         arguments=['axle_joints_velocity_controller', '-c', '/controller_manager'],
         output='screen',
         condition=IfCondition(AndSubstitution(use_ros2_control,
-                                              PythonExpression(["'", ros2_control_config, "'",
-                                                                " == 'joint_control.yaml'"]))),
+                                              PythonExpression(["'joint_control.yaml' in ",
+                                                                "'", ros2_control_config, "'"]))),
     )
 
-    spawn_front_steers_position_controller = Node(
+    spawn_steer_joints_position_controller = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['front_steers_position_controller', '-c', '/controller_manager'],
+        arguments=['steer_joints_position_controller', '-c', '/controller_manager'],
         output='screen',
         condition=IfCondition(AndSubstitution(use_ros2_control,
-                                              PythonExpression(["'", ros2_control_config, "'",
-                                                                " == 'joint_control.yaml'"]))),
+                                              PythonExpression(["'joint_control.yaml' in ",
+                                                                "'", ros2_control_config, "'"]))),
     )
 
     # Make sure all the other controller starts after spawn_joint_state_broadcaster
@@ -153,7 +159,7 @@ def generate_launch_description():
             target_action=spawn_joint_state_broadcaster,
             on_exit=[spawn_ackermann_steering_controller,
                      spawn_axle_joints_velocity_controller,
-                     spawn_front_steers_position_controller],
+                     spawn_steer_joints_position_controller],
         )
     )
 

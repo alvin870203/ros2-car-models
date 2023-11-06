@@ -20,8 +20,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'joint_gazebo_control_cmd = cmd_pubsub.joint_gazebo_control_cmd:main',
-            'joint_ros2_control_cmd = cmd_pubsub.joint_ros2_control_cmd:main',
+            'fws_joint_gazebo_control_cmd = cmd_pubsub.fws_joint_gazebo_control_cmd:main',
+            'fws_joint_ros2_control_cmd = cmd_pubsub.fws_joint_ros2_control_cmd:main',
+            '4ws_joint_gazebo_control_cmd = cmd_pubsub.4ws_joint_gazebo_control_cmd:main',
+            '4ws_joint_ros2_control_cmd = cmd_pubsub.4ws_joint_ros2_control_cmd:main',
         ],
     },
 )

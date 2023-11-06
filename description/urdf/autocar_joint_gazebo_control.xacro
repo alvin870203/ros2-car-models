@@ -24,8 +24,12 @@
       <!-- Update rate in Hertz -->
       <update_rate>100</update_rate>
       <!-- Name of joints in the model whose states will be published. -->
-      <joint_name>l_steer</joint_name>
-      <joint_name>r_steer</joint_name>
+      <joint_name>fl_steer</joint_name>
+      <joint_name>fr_steer</joint_name>
+      <xacro:if value="$(arg use_4ws)">
+        <joint_name>bl_steer</joint_name>
+        <joint_name>br_steer</joint_name>
+      </xacro:if>
       <joint_name>fl_axle</joint_name>
       <joint_name>fr_axle</joint_name>
       <joint_name>bl_axle</joint_name>
