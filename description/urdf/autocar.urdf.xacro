@@ -7,6 +7,8 @@
 
   <xacro:include filename="autocar_core.xacro" />
 
+  <xacro:include filename="autocar_p3d_gazebo_control.xacro" />
+
   <xacro:if value="$(arg use_ros2_control)">
     <xacro:include filename="autocar_ros2_control.xacro" />
   </xacro:if>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <gazebo>
+    <plugin name="p3d" filename="libgazebo_ros_p3d.so">
+
+      <ros>
+        <namespace>/p3d</namespace>
+        <remapping>odom:=odom</remapping>
+      </ros>
+      <body_name>base_link</body_name>
+      <frame_name>world</frame_name>  <!-- ALC231108 - TODO map odom to tf2 btw world and base_link -->
+      <update_rate>0</update_rate>
+      <xyz_offset>0 0 0</xyz_offset>
+      <rpy_offset>0 0 0</rpy_offset>
+      <gaussian_noise>0</gaussian_noise>
+
+    </plugin>
+  </gazebo>
+
+</robot>
