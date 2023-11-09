@@ -11,6 +11,11 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(nav_msgs REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -24,11 +29,27 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+add_executable(odom2tf src/odom2tf.cpp)
+ament_target_dependencies(
+  odom2tf
+  geometry_msgs
+  rclcpp
+  tf2
+  tf2_ros
+  nav_msgs
+)
+
 install(
   DIRECTORY
     launch worlds
   DESTINATION
     share/${PROJECT_NAME}
 )
+
+install(
+  TARGETS
+  odom2tf
+  DESTINATION
+    lib/${PROJECT_NAME})
 
 ament_package()

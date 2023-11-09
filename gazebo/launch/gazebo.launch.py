@@ -163,6 +163,16 @@ def generate_launch_description():
         )
     )
 
+    odom2tf_broadcaster = Node(
+        package='gazebo',
+        executable='odom2tf',
+        name='odom2tf',
+        parameters=[
+            {'use_sim_time': True}
+        ],
+        output='screen',
+    )
+
     # ALC231031 BEGIN - TODO: uncomment and revise these when ros2_control is set.
     # # Launch robot_control/control.launch.py which is just robot_localization.
     # launch_robot_control = IncludeLaunchDescription(
@@ -185,6 +195,7 @@ def generate_launch_description():
     ld.add_action(spawn_joint_state_broadcaster)
     ld.add_action(controllers_spawn_callback)
     ld.add_action(relay_topic_to_tf_node)
+    ld.add_action(odom2tf_broadcaster)
     # ld.add_action(launch_robot_control)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
     # ld.add_action(launch_robot_teleop_base)  # ALC231031- TODO: uncomment and revise these when ros2_control is set.
 
